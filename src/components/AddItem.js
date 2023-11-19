@@ -68,8 +68,6 @@ const AddItem = () => {
 
   /**
    * Renders the AddItem component.
-   *
-   * @returns {JSX.Element} JSX representation of the component.
    */
   return (
     <div>
