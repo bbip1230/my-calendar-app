@@ -1,16 +1,36 @@
+/* 
+* Second view for my-calendar-app.
+* Allows user to add new item.
+*/
 import React, { useState } from 'react';
 import Header from './Header';
 import DatePicker from 'react-datepicker'; // imported calendar API
-import 'react-datepicker/dist/react-datepicker.css'; // Select calendar styles
+import 'react-datepicker/dist/react-datepicker.css'; // Styling for calendar selection
 import './AddItem.css';
 
+/**
+ * Component for adding a new item with a form.
+ * @component
+ */
 const AddItem = () => {
+  /**
+   * State to manage the new item data.
+   * @type {Object}
+   * @property {string} itemName - The name of the item.
+   * @property {string} itemDescription - The description of the item.
+   * @property {Date | null} selectedDate - The selected date for the item.
+   */
   const [newItem, setNewItem] = useState({
     itemName: '',
     itemDescription: '',
     selectedDate: null,
   });
 
+  /**
+   * Handles changes in input fields.
+   *
+   * @param {Object} e - The event object.
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewItem((prevItem) => ({
@@ -19,6 +39,11 @@ const AddItem = () => {
     }));
   };
 
+  /**
+   * Handles changes in the selected date.
+   *
+   * @param {Date} date - The selected date.
+   */
   const handleDateChange = (date) => {
     setNewItem((prevItem) => ({
       ...prevItem,
@@ -26,6 +51,11 @@ const AddItem = () => {
     }));
   };
 
+  /**
+   * Handles form submission.
+   *
+   * @param {Object} e - The event object.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('New Item Data:', newItem);
@@ -36,6 +66,11 @@ const AddItem = () => {
     });
   };
 
+  /**
+   * Renders the AddItem component.
+   *
+   * @returns {JSX.Element} JSX representation of the component.
+   */
   return (
     <div>
       <Header />
