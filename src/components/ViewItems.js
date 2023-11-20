@@ -47,14 +47,12 @@ const ViewItems = (props) => {
           <Card key={index}>
             <img src={item.image} alt={item.name} style={{ maxWidth: '100px', height: 'auto' }} />
             <div>
-            
               <strong>{item.name}</strong>
               <p>{item.description}</p>
-              
             </div>
             <div>
-                <FaCalendar />
-                <span>{item.date}</span>
+              <FaCalendar />
+              <span>{item.date}</span>
             </div>
           </Card>
         ))}

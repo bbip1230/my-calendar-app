@@ -1,46 +1,39 @@
 .ViewItems {
-      max-width: 600px;
-      margin: 0 auto;
-    }
+  max-width: 600px;
+  margin: 0 auto;
+}
   
+.ViewItems h2 {
+  color: #333;
+}
   
-    .ViewItems h2 {
-      color: #333;
-    }
-  
-  
-    .ViewItems ul {
-      list-style: none;
-      padding: 0;
-    }
-  
- 
-    .ViewItems li {
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 5px;
-    }
-  
-    .ViewItems li div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.ViewItems ul {
+  list-style: none;
+  padding: 0;
+}
 
-    .ViewItems strong {
-      color: #007bff;
-    }
+.ViewItems li {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
   
-    .ViewItems p {
-      margin: 5px 0;
-      color: #555;
-    }
-  
-    .ViewItems span {
-      margin-left: 5px;
-    }
-  
+.ViewItems li div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-
+.ViewItems strong {
+  color: #007bff;
+}
   
+.ViewItems p {
+  margin: 5px 0;
+  color: #555;
+}
+  
+.ViewItems span {
+  margin-left: 5px;
+}
