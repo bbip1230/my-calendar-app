@@ -1,0 +1,42 @@
+/* MyItemsPage.css */
+
+.MyItemsPage {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .MyItemsPage h2 {
+    color: #333;
+  }
+  
+  .MyItemsPage ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .MyItemsPage li {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .MyItemsPage li div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .MyItemsPage strong {
+    color: #007bff;
+  }
+  
+  .MyItemsPage p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .MyItemsPage span {
+    margin-left: 5px;
+  }
+  
