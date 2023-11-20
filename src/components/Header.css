@@ -15,13 +15,22 @@ header {
   .navigation ul {
     list-style: none;
     display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 5px;
+    
   }
   
   .navigation li {
+    padding: 5px;
     cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s
+  }
+
+  .navigation li:hover {
+    background: #5e72e4;
+    color:#f8f9fa;
+    transition: background-color 0.3s
   }
   
   .sign-in {
