@@ -14,21 +14,21 @@ const ViewItems = (props) => {
   const userItems = [
     {
       name: 'Dinner with friends',
-      description: 'Description',
+      description: 'Meet with Bob and Bobby for dinner',
       date: '2023-11-20',
-      image: 'public/dinner_image.jpg',
+      image: '/dinner_image.jpg',
     },
     {
       name: 'Doctor appointment',
-      description: 'Description',
+      description: 'Annual checkup',
       date: '2023-11-21',
-      image: 'public/images/doctor.jpg',
+      image: '/doctor.jpg',
     },
     {
       name: 'Vet visit',
-      description: 'Description',
+      description: 'Take Bobble for yearlys',
       date: '2023-11-22',
-      image: 'public/images/vet.jpg',
+      image: '/images/vet.jpg',
     },
   ];
 
@@ -42,16 +42,18 @@ const ViewItems = (props) => {
       <AuthenticatedHeader />
       <div className="ViewItems">
         <h2>My Items</h2>
+        <br />
         {userItems.map((item, index) => (
           <Card key={index}>
             <div>
+              <img src={item.image} alt={item.name} />
               <strong>{item.name}</strong>
               <p>{item.description}</p>
-              <div>
-              <img src={item.image} alt={item.name} style={{ maxWidth: '100%', height: 'auto' }} />
+              <br />
+            </div>
+            <div>
                 <FaCalendar />
                 <span>{item.date}</span>
-              </div>
             </div>
           </Card>
         ))}

@@ -1,42 +1,55 @@
 /* ViewItems.css */
 
 .ViewItems {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .ViewItems h2 {
-    color: #333;
-  }
-  
-  .ViewItems ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .ViewItems li {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .ViewItems li div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .ViewItems strong {
-    color: #007bff;
-  }
-  
-  .ViewItems p {
-    margin: 5px 0;
-    color: #555;
-  }
-  
-  .ViewItems span {
-    margin-left: 5px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.Card {
+  display: flex; /* Use flex container */
+  flex-direction: column; /* Stack items vertically */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  margin: 16px;
+  width: 300px;
+}
+
+.Card:hover {
+  transform: scale(1.05);
+}
+
+.Card div {
+  padding: 16px;
+  flex-grow: 1; /* Allow the content to grow vertically */
+}
+
+.Card strong {
+  color: #007bff;
+}
+
+.Card p {
+  color: #333;
+}
+
+.Card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.Card div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+}
+
   
