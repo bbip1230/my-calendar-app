@@ -1,5 +1,6 @@
 import React from 'react';
-import './Item.css'; // Assuming you have styling in Item.css
+//import './Item.css'; // Assuming you have styling in Item.css
+//Styling is in ViewItems.css
 
 const Item = ({ title, image }) => {
   return (

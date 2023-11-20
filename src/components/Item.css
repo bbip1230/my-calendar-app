@@ -5,7 +5,7 @@
   }
   
   .item img {
-    max-width: 100%;
+    max-width: 100px;
     height: auto;
     border-bottom: 1px solid #ddd;
   }
