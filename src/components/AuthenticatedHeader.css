@@ -1,4 +1,5 @@
 /* Header.css */
+/*Not in use, swapped for Header.css in AuthenticatedHeader.js */
 header {
     display: flex;
     justify-content: space-between;
@@ -22,6 +23,10 @@ header {
   
   .navigation li {
     cursor: pointer;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s
   }
   
   .log-out {

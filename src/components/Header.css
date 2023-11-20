@@ -15,6 +15,7 @@ header {
   .navigation ul {
     list-style: none;
     display: flex;
+    float:left;
     margin: 10px;
     padding: 5px;
     
@@ -33,15 +34,18 @@ header {
     transition: background-color 0.3s
   }
   
-  .sign-in {
+  .sign-in, .log-out {
     background-color: #5e72e4; /* Adjust the color to match your branding */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     cursor: pointer;
+    font-size: 15px;
+    margin-left: 15px;
+    transition: background-color 0.3s
   }
   
-  .sign-in:hover {
+  .sign-in:hover, .log-out:hover {
     background-color: #4e62d4; /* Darker shade for hover state */
+    transition: background-color 0.3s
   }
-  

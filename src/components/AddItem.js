@@ -77,7 +77,7 @@ const AddItem = () => {
         <h2>Add Item</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Item Name:
+            Item Name
             <input
               type="text"
               name="itemName"
@@ -87,7 +87,7 @@ const AddItem = () => {
           </label>
           <br />
           <label>
-            Item Description:
+            Item Description
             <input
               type="text"
               name="itemDescription"
@@ -97,7 +97,7 @@ const AddItem = () => {
           </label>
           <br />
           <label>
-            Select Date:
+            Select Date
             <DatePicker
               selected={newItem.selectedDate}
               onChange={handleDateChange}
