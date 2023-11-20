@@ -22,13 +22,13 @@ const ViewItems = (props) => {
       name: 'Doctor appointment',
       description: 'Annual checkup',
       date: '2023-11-21',
-      image: '/doctor.jpg',
+      image: '/doctor_image.jpg',
     },
     {
       name: 'Vet visit',
       description: 'Take Bobble for yearlys',
       date: '2023-11-22',
-      image: '/images/vet.jpg',
+      image: '/vet_image.jpg',
     },
   ];
 
@@ -45,11 +45,12 @@ const ViewItems = (props) => {
         <br />
         {userItems.map((item, index) => (
           <Card key={index}>
+            <img src={item.image} alt={item.name} style={{ maxWidth: '100px', height: 'auto' }} />
             <div>
-              <img src={item.image} alt={item.name} />
+            
               <strong>{item.name}</strong>
               <p>{item.description}</p>
-              <br />
+              
             </div>
             <div>
                 <FaCalendar />
