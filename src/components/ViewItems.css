@@ -1,42 +1,42 @@
-/* MyItemsPage.css */
+/* ViewItems.css */
 
-.MyItemsPage {
+.ViewItems {
     max-width: 600px;
     margin: 0 auto;
   }
   
-  .MyItemsPage h2 {
+  .ViewItems h2 {
     color: #333;
   }
   
-  .MyItemsPage ul {
+  .ViewItems ul {
     list-style: none;
     padding: 0;
   }
   
-  .MyItemsPage li {
+  .ViewItems li {
     margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
   }
   
-  .MyItemsPage li div {
+  .ViewItems li div {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
-  .MyItemsPage strong {
+  .ViewItems strong {
     color: #007bff;
   }
   
-  .MyItemsPage p {
+  .ViewItems p {
     margin: 5px 0;
     color: #555;
   }
   
-  .MyItemsPage span {
+  .ViewItems span {
     margin-left: 5px;
   }
   

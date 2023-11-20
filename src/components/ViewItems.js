@@ -16,19 +16,19 @@ const ViewItems = (props) => {
       name: 'Dinner with friends',
       description: 'Description',
       date: '2023-11-20',
-      image: 'images/dinner_image.jpg',
+      image: 'public/dinner_image.jpg',
     },
     {
       name: 'Doctor appointment',
       description: 'Description',
       date: '2023-11-21',
-      image: 'images/doctor.jpg',
+      image: 'public/images/doctor.jpg',
     },
     {
       name: 'Vet visit',
       description: 'Description',
       date: '2023-11-22',
-      image: 'images/vet.jpg',
+      image: 'public/images/vet.jpg',
     },
   ];
 
