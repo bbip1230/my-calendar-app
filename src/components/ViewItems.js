@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaCalendar } from 'react-icons/fa';
 import AuthenticatedHeader from './AuthenticatedHeader';
+import Card from './Card';
 import './ViewItems.css';
 
 /**
@@ -14,17 +15,17 @@ const ViewItems = (props) => {
     {
       name: 'Dinner with friends',
       description: 'Description for User Item 1',
-      date: '2023-11-20', // Example date, replace with actual date
+      date: '2023-11-20',
     },
     {
       name: 'Doctor appointment',
       description: 'Description for User Item 2',
-      date: '2023-11-21', // Example date, replace with actual date
+      date: '2023-11-21',
     },
     {
       name: 'Vet visit',
       description: 'Description for User Item 3',
-      date: '2023-11-22', // Example date, replace with actual date
+      date: '2023-11-22',
     },
   ];
 
@@ -38,25 +39,21 @@ const ViewItems = (props) => {
       <AuthenticatedHeader />
       <div className="ViewItems">
         <h2>My Items</h2>
-        <ul>
-          {userItems.map((item, index) => (
-            <li key={index}>
+        {userItems.map((item, index) => (
+          <Card key={index}>
+            <div>
+              <strong>{item.name}</strong>
+              <p>{item.description}</p>
               <div>
-                <strong>{item.name}</strong>
-                <p>{item.description}</p>
-                <div>
-                  <FaCalendar />
-                  <span>{item.date}</span>
-                </div>
+                <FaCalendar />
+                <span>{item.date}</span>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );
 };
 
 export default ViewItems;
-
-

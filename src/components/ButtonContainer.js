@@ -7,7 +7,7 @@ const ButtonContainer = () => {
   return (
     <div className="button-container">
       <button onClick={() => navigate('/viewitems')} className="new-button">
-        View Items
+        My Items
       </button>
       <button onClick={() => navigate('/additem')} className="new-button">
         Add Item
