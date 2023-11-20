@@ -3,11 +3,11 @@
  * Allows user to add new item.
  */
 import React, { useState } from 'react';
-import Header from './Header';
 import DatePicker from 'react-datepicker'; // imported calendar API
 import 'react-datepicker/dist/react-datepicker.css'; // Styling for calendar selection
 import './AddItem.css';
 import AuthenticatedHeader from './AuthenticatedHeader';
+
 /**
  * Component for adding a new item with a form.
  * @component
@@ -59,6 +59,7 @@ const AddItem = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('New Item Data:', newItem);
+
     setNewItem({
       itemName: '',
       itemDescription: '',
