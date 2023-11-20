@@ -14,18 +14,21 @@ const ViewItems = (props) => {
   const userItems = [
     {
       name: 'Dinner with friends',
-      description: 'Description for User Item 1',
+      description: 'Description',
       date: '2023-11-20',
+      image: 'images/dinner_image.jpg',
     },
     {
       name: 'Doctor appointment',
-      description: 'Description for User Item 2',
+      description: 'Description',
       date: '2023-11-21',
+      image: 'images/doctor.jpg',
     },
     {
       name: 'Vet visit',
-      description: 'Description for User Item 3',
+      description: 'Description',
       date: '2023-11-22',
+      image: 'images/vet.jpg',
     },
   ];
 
@@ -45,6 +48,7 @@ const ViewItems = (props) => {
               <strong>{item.name}</strong>
               <p>{item.description}</p>
               <div>
+              <img src={item.image} alt={item.name} style={{ maxWidth: '100%', height: 'auto' }} />
                 <FaCalendar />
                 <span>{item.date}</span>
               </div>
