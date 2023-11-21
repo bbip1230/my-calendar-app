@@ -2,7 +2,7 @@ import React from 'react';
 import Calendar from '../components/Calendar';
 //import Item from '../components/Item';
 import AuthenticatedHeader from '../components/AuthenticatedHeader';
-import '../components/AuthenticatedHeader.css';
+import '../components/Header.css';
 import ButtonContainer from '../components/ButtonContainer';
 import './AuthenticatedView.css';
 

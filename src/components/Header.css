@@ -3,7 +3,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0 20px;
     background-color: #f8f9fa;
   }
   
@@ -21,27 +21,28 @@ header {
     
   }
   
-  .navigation li {
+  .navigation li, li a {
     padding: 5px;
     cursor: pointer;
-    background-color: #f8f9fa;
-    transition: background-color 0.3s
+    transition: background-color 0.3s;
+    text-decoration: none;
   }
 
-  .navigation li:hover {
+  .navigation li:hover, li a:hover {
     background: #5e72e4;
     color:#f8f9fa;
-    transition: background-color 0.3s
+    transition: background-color 0.3s;
+    text-decoration: none;
   }
   
   .sign-in, .log-out {
     background-color: #5e72e4; /* Adjust the color to match your branding */
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 15px;
-    margin-left: 15px;
+    margin: 10px 0 15px 0;
     transition: background-color 0.3s
   }
   

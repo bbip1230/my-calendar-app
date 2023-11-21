@@ -36,6 +36,22 @@
     float:right;
 }
 
+.new-button {
+  background-color: #5e72e4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: background-color 0.3s;
+    max-width: 57.5%;
+}
+
+.new-button:hover {
+  background-color: #4e62d4;
+    transition: background-color 0.3s
+}
+
 .welcome-message h1{
     text-align: center;
     font-style: italic;
