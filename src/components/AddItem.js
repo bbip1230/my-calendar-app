@@ -13,7 +13,7 @@ import AuthenticatedHeader from './AuthenticatedHeader';
  * @component
  */
 const AddItem = () => {
-  /**
+   /**
    * State to manage the new item data.
    * @type {Object}
    * @property {string} itemName - The name of the item.
@@ -25,6 +25,8 @@ const AddItem = () => {
     itemDescription: '',
     selectedDate: null,
   });
+  const [errors, setErrors] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   /**
    * Handles changes in input fields.
@@ -33,10 +35,7 @@ const AddItem = () => {
    */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewItem((prevItem) => ({
-      ...prevItem,
-      [name]: value,
-    }));
+    setNewItem(prevItem => ({ ...prevItem, [name]: value }));
   };
 
   /**
@@ -45,10 +44,40 @@ const AddItem = () => {
    * @param {Date} date - The selected date.
    */
   const handleDateChange = (date) => {
-    setNewItem((prevItem) => ({
-      ...prevItem,
-      selectedDate: date,
-    }));
+    setNewItem(prevItem => ({ ...prevItem, selectedDate: date }));
+  };
+
+  /**
+ * Validates the form input fields.
+ * 
+ * Checks each input field for validity and updates the `errors` 
+ * state with appropriate error messages.
+ * 
+ * @returns {boolean} True if all fields are valid, false otherwise.
+ */
+  const validate = () => {
+    let tempErrors = {};
+    tempErrors.itemName = newItem.itemName ? "" : "Item name is required.";
+    tempErrors.itemDescription = newItem.itemDescription ? "" : "Description is required.";
+    tempErrors.selectedDate = newItem.selectedDate ? "" : "Date is required.";
+    
+    setErrors(tempErrors);
+    return Object.values(tempErrors).every(x => x === "");
+  };
+
+  /**
+  * Resets the form fields and clears any existing errors.
+  * 
+  * Sets the `newItem` state back to its initial values (empty), clears any validation errors, 
+  * sets `isSubmitted` to true, and then sets it back to false 
+  * after a delay
+  * called after successful form submission.
+  */
+  const resetForm = () => {
+    setNewItem({ itemName: '', itemDescription: '', selectedDate: null });
+    setErrors({});
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   /**
@@ -58,18 +87,12 @@ const AddItem = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('New Item Data:', newItem);
-
-    setNewItem({
-      itemName: '',
-      itemDescription: '',
-      selectedDate: null, // Reset selected date after submission
-    });
+    if (validate()) {
+      console.log('New Item Data:', newItem);
+      resetForm();
+    }
   };
 
-  /**
-   * Renders the AddItem component.
-   */
   return (
     <div>
       <AuthenticatedHeader />
@@ -84,6 +107,7 @@ const AddItem = () => {
               value={newItem.itemName}
               onChange={handleInputChange}
             />
+            {errors.itemName && <div className="error">{errors.itemName}</div>}
           </label>
           <br />
           <label>
@@ -94,6 +118,7 @@ const AddItem = () => {
               value={newItem.itemDescription}
               onChange={handleInputChange}
             />
+            {errors.itemDescription && <div className="error">{errors.itemDescription}</div>}
           </label>
           <br />
           <label>
@@ -103,13 +128,22 @@ const AddItem = () => {
               onChange={handleDateChange}
               dateFormat="MM/dd/yyyy"
             />
+            {errors.selectedDate && <div className="error">{errors.selectedDate}</div>}
           </label>
           <br />
           <button type="submit">Add Item</button>
         </form>
+        {isSubmitted && <div className="success-message">Item added successfully!</div>}
       </div>
     </div>
   );
 };
 
 export default AddItem;
+
+
+
+
+
+  
+
