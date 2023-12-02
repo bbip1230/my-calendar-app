@@ -63,4 +63,15 @@
   .AddItem button:hover {
     background-color: #4e62d4;
   }
+
+  .error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 0.9em;
+  }
   
