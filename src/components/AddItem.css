@@ -34,19 +34,24 @@
     text-align: center;
   }
   /* Style for the form input fields */
-  .AddItem input {
+  .AddItem input, select {
     padding: 8px;
     margin: 0px 7px 12px 7px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    transition: background-color 0.3s
+    background-color: #f8f9fa;
+    transition: background-color 0.3s;
+    cursor: pointer;
   }
 
-  .AddItem input:focus {
+  .AddItem input:focus, select:focus {
     background-color:#e2e2ff;
   }
   
-  
+ .AddItem option {
+  background-color: #f8f9fa;
+ }
+
   /* Style for the form submit button */
   .AddItem button {
     padding: 10px;

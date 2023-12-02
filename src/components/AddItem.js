@@ -18,11 +18,13 @@ const AddItem = () => {
    * @type {Object}
    * @property {string} itemName - The name of the item.
    * @property {string} itemDescription - The description of the item.
+   * @property {string} itemTag - The selected tag of an item.
    * @property {Date | null} selectedDate - The selected date for the item.
    */
   const [newItem, setNewItem] = useState({
     itemName: '',
     itemDescription: '',
+    itemTag: '',
     selectedDate: null,
   });
   const [errors, setErrors] = useState({});
@@ -46,6 +48,13 @@ const AddItem = () => {
   const handleDateChange = (date) => {
     setNewItem(prevItem => ({ ...prevItem, selectedDate: date }));
   };
+
+  /**
+   * Handles the changes in the selected tags.
+   */
+  const handleSelectChange = (e) => {
+    setNewItem(prevItem => ({...prevItem, itemTag: e.target.value}))
+  }
 
   /**
  * Validates the form input fields.
@@ -74,7 +83,7 @@ const AddItem = () => {
   * called after successful form submission.
   */
   const resetForm = () => {
-    setNewItem({ itemName: '', itemDescription: '', selectedDate: null });
+    setNewItem({ itemName: '', itemDescription: '', itemTag: '', selectedDate: null, });
     setErrors({});
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 3000);
@@ -119,6 +128,17 @@ const AddItem = () => {
               onChange={handleInputChange}
             />
             {errors.itemDescription && <div className="error">{errors.itemDescription}</div>}
+          </label>
+          <br />
+          <label>
+            Tag
+            <select name="tag" value={newItem.itemTag} onChange={handleSelectChange}>
+              <option value=""></option>
+              <option value="Appointment">Appointment</option>
+              <option value="Social">Social</option>
+              <option value="Reminder">Reminder</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
           </label>
           <br />
           <label>
