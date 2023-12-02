@@ -5,12 +5,16 @@ import './App.css';
 import AuthenticatedView from './pages/AuthenticatedView';
 import AddItem from './components/AddItem';
 import ViewItems from './components/ViewItems';
+import NotFound from './components/NotFound'
 
 function App() {
   //const navigate = useNavigate();
+  //isAuth variable is passed as props, must be modified by log in or sign up page
+  var isAuth = false;
   return (
     <Router>
       <Routes>
+        <Route path="*" element={<NotFound loggedIn={isAuth} />} />
         <Route path="/" element={<Home />} />
         <Route path="authenticatedview" element={<AuthenticatedView />} />
         <Route path="/additem" element={<AddItem />} />
