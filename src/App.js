@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import './App.css';
 import AuthenticatedView from './pages/AuthenticatedView';
 import AddItem from './components/AddItem';
+import EditItem from './components/EditItem';
 import ViewItems from './components/ViewItems';
-import NotFound from './components/NotFound'
+import NotFound from './components/NotFound';
 
 function App() {
-  //const navigate = useNavigate();
-  //isAuth variable is passed as props, must be modified by log in or sign up page
-  var isAuth = false;
+  const isAuth = false;
+
+  // Placeholder item object for editing
+  const itemToEdit = {
+    itemName: 'Example Item to Edit',
+    itemDescription: 'Example Description to Edit',
+    selectedDate: new Date(),
+  };
+
+  // Placeholder submit function for editing
+  const onEditSubmit = (editedItem) => {
+    // Implement your logic for handling the edited item submission
+    console.log('Submit edited item:', editedItem);
+  };
+
   return (
     <Router>
       <Routes>
@@ -18,6 +31,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="authenticatedview" element={<AuthenticatedView />} />
         <Route path="/additem" element={<AddItem />} />
+        {/* Pass the itemToEdit object and onEditSubmit function to the EditItem component */}
+        <Route
+          path="/edititems"
+          element={<EditItem itemToEdit={itemToEdit} onEditSubmit={onEditSubmit} />}
+        />
         <Route path="/viewitems" element={<ViewItems />} />
       </Routes>
     </Router>
