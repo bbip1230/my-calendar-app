@@ -94,13 +94,30 @@ const AddItem = () => {
    *
    * @param {Object} e - The event object.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log('New Item Data:', newItem);
-      resetForm();
+      try {
+        const response = await fetch('http://localhost:5000/api/events', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newItem),
+        });
+  
+        if (response.ok) {
+          console.log('New Item Data:', newItem);
+          resetForm();
+        } else {
+          console.error('Failed to add item. Server returned:', response.status);
+        }
+      } catch (error) {
+        console.error('Error adding item:', error);
+      }
     }
   };
+  
 
   return (
     <div>
