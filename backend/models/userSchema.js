@@ -8,3 +8,11 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
+
+const eventSchema = new mongoose.Schema({
+  itemName: String,
+  itemDescription: String,
+  itemTag: String,
+  selectedDate: Date,
+});
+const Event = mongoose.model('Event', eventSchema);

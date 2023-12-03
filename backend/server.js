@@ -75,4 +75,23 @@ app.post('/login', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Error logging in' });
   }
+
+  app.post('/api/events', async (req, res) => {
+    const { itemName, itemDescription, itemTag, selectedDate } = req.body;
+  
+    const newEvent = new Event({
+      itemName,
+      itemDescription,
+      itemTag,
+      selectedDate,
+    });
+  
+    try {
+      await newEvent.save();
+      res.status(201).json(newEvent);
+    } catch (error) {
+      console.error('Error saving event:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 });
