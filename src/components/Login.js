@@ -9,9 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  //const correctEmail = 'bob@gmail.com';
-  //const correctPassword = '1234';
-
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -21,23 +18,6 @@ const Login = () => {
       console.log(res.data);
     });
   };
-
-  /*
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log('Login with:', email, password);
-    if (email === correctEmail && password === correctPassword) {
-      setIsLoggedIn(true);
-      console.log('Login successful!');
-      navigate('authenticatedview');
-    } else {
-      setIsLoggedIn(false);
-      console.log('invalid usernmae or password');
-    }
-  };
-*/
 
   const handleLogin = async (event) => {
     event.preventDefault();
