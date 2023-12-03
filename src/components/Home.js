@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import AuthenticatedHeader from './AuthenticatedHeader';
 import Calendar from './Calendar';
 import Login from './Login';
 import './Home.css';
@@ -7,7 +8,7 @@ import './Home.css';
 const Home = () => {
   return (
     <div className="home">
-      <Header />
+      <AuthenticatedHeader />
       <div className="welcome-message">
         <h1>Welcome to CalendarApp!</h1>
       </div>

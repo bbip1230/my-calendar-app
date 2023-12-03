@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
+  const [users, setUsers] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const correctEmail = 'bob@gmail.com';
-  const correctPassword = '1234';
+  //const correctEmail = 'bob@gmail.com';
+  //const correctPassword = '1234';
 
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = () => {
+    axios.get('http://localhost:4000/register').then((res) => {
+      console.log(res.data);
+    });
+  };
+
+  /*
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // You would handle the login logic here
     console.log('Login with:', email, password);
     if (email === correctEmail && password === correctPassword) {
       setIsLoggedIn(true);
@@ -24,44 +37,65 @@ const Login = () => {
       console.log('invalid usernmae or password');
     }
   };
+*/
 
-  const navigate = useNavigate();
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:4000/login', {
+        email,
+        password,
+      });
+      const token = response.data.token;
+      alert('Login successful');
+      setEmail('');
+      setPassword('');
+      fetchUsers();
+      navigate('authenticatedview');
+      window.location.reload();
+      localStorage.setItem('token', token);
+    } catch (error) {
+      console.log('Login Error');
+    }
+  };
 
   return (
     <div className="login-container">
-      {isLoggedIn ? (
-        <p>You are logged in!</p>
-      ) : (
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="login-submit-button">
-            Login now
-          </button>
-          <div className="alternative">
-            <span>OR</span>
-          </div>
-          <button type="button" className="signup-button">
-            Signup now
-          </button>
-        </form>
-      )}
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <label htmlFor="email">Email address</label>
+          <input
+            type="email"
+            placeholder="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            placeholder="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="login-submit-button">
+          Login
+        </button>
+        <div className="alternative">
+          <span>OR</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => navigate('/signup')}
+          className="signup-button"
+        >
+          Signup
+        </button>
+      </form>
     </div>
   );
 };
