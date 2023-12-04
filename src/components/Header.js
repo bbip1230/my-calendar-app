@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
-  
+
   return (
     <header>
       <div className="logo">CalendarApp</div>
@@ -13,12 +13,6 @@ const Header = () => {
         <ul>
           <li>
             <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">My Items</Link>
-          </li>
-          <li>
-            <Link to="/">Add Item</Link>
           </li>
         </ul>
         <button className="sign-in">Sign In</button>

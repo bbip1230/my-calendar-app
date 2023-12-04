@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Item = require('../../../models/CalendarItem'); 
+const Item = require('../../../models/userSchema'); 
 router.get('/', async (req, res) => {
     try {
         const items = await Item.find();

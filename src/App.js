@@ -7,9 +7,11 @@ import AddItem from './components/AddItem';
 import EditItem from './components/EditItem';
 import ViewItems from './components/ViewItems';
 import NotFound from './components/NotFound';
+//import SignupPage from './pages/SignupPage';
 
 function App() {
   const isAuth = false;
+  //const isUserSignedIn = !!localStorage.getItem('token');
 
   // Placeholder item object for editing
   const itemToEdit = {
@@ -20,7 +22,6 @@ function App() {
 
   // Placeholder submit function for editing
   const onEditSubmit = (editedItem) => {
-    // Implement your logic for handling the edited item submission
     console.log('Submit edited item:', editedItem);
   };
 

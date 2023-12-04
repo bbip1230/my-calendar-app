@@ -1,32 +1,97 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const calendarItemsRouter = require('./routes/api/CalendarItems'); 
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('./models/userSchema');
 
+const SECRET_KEY = 'secretkey';
+//connect to express app
 const app = express();
-const port = process.env.PORT || 8082;
 
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
-
-// Connect to MongoDB
-const conn_str = "mongodb+srv://bipi_user:B2021ipasha@cluster0.orbhgoa.mongodb.net/?retryWrites=true&w=majority";
-mongoose.set('strictQuery', false);
-mongoose.connect(conn_str, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
-})
+//connect to Mongodb
+const dbURI =
+  'mongodb+srv://admin:calendarapp123@cluster0.ypljewe.mongodb.net/UsersDB?retryWrites=true&w=majority';
+mongoose
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log(`MongoDB Connection Succeeded...`);
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+    app.listen(4000, () => {
+      console.log('Server is connected to port 4000 and connected to MongoDb');
     });
   })
-  .catch(err => {
-    console.log(`Error in DB Connection: ${err}`);
+  .catch((error) => {
+    console.log('Unable to connect to Server and/or MongoDb');
   });
 
-// Root route
-app.get('/', (req, res) => {
-  res.send('Hello world!');
+//middleware
+app.use(bodyParser.json());
+app.use(cors());
+
+//Routes
+//User Registration
+
+app.post('/register', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ email, password: hashedPassword });
+    await newUser.save();
+    res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error signing up' });
+  }
+});
+
+//get request registered users
+app.get('/register', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(201).json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Unable to get users' });
+  }
+});
+
+//get login
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    const token = jwt.sign({ userId: user._id }, SECRET_KEY, {
+      expiresIn: '1hr',
+    });
+    res.json({ message: 'Login successful' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error logging in' });
+  }
+
+  app.post('/api/events', async (req, res) => {
+    const { itemName, itemDescription, itemTag, selectedDate } = req.body;
+  
+    const newEvent = new Event({
+      itemName,
+      itemDescription,
+      itemTag,
+      selectedDate,
+    });
+  
+    try {
+      await newEvent.save();
+      res.status(201).json(newEvent);
+    } catch (error) {
+      console.error('Error saving event:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 });

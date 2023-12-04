@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker'; // imported calendar API
 import 'react-datepicker/dist/react-datepicker.css'; // Styling for calendar selection
 import './AddItem.css';
 import AuthenticatedHeader from './AuthenticatedHeader';
+import axios from 'axios';
 
 /**
  * Component for adding a new item with a form.
@@ -80,18 +81,30 @@ const AddItem = () => {
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
-  /**
-   * Handles form submission.
-   *
-   * @param {Object} e - The event object.
-   */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log('New Item Data:', newItem);
-      resetForm();
+      try {
+        const response = await fetch('http://localhost:5000/api/events', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newItem),
+        });
+  
+        if (response.ok) {
+          console.log('New Item Data:', newItem);
+          resetForm();
+        } else {
+          console.error('Failed to add item. Server returned:', response.status);
+        }
+      } catch (error) {
+        console.error('Error adding item:', error);
+      }
     }
   };
+  
 
   return (
     <div>
